@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style.css">
+    <script src="jquery-3.4.1.min.js"></script>
+    <title>VP Editor</title>
+</head>
+<body>
+    <div class="content">
+        <div class="innercontent" style="text-align: center;">
+
+            <div class="input_button">
+                <button class="defbutton" id="of_video_overlay" style="border-radius: 10px;"><img src="./assets/upvid.png">
+                </button>
+                <input type="file" id="of_video"/>
+            </div>
+            <div class="input_button">
+                <button class="defbutton" id="of_meta_overlay" style="border-radius: 10px;"><img src="./assets/upmeta.png"></button>
+                <input type="file" id="of_meta"/>
+            </div>
+            <div class="input_button">
+                <button class="defbutton" style="border-radius: 10px;"><a id="of_meta_d"><img src="./assets/downmeta.png"></a></button>
+            </div>
+        </div>
+        <div id="temp_export" style="display: none;"></div>
+        <div class="innercontent">
+            <h2 id="curev"></h2>
+            <p id="skip" style="color: red;"></p>
+            <video width="60%" height="auto" id="video_player" style="display: inline-block;" poster="./assets/video_placeholder.png"></video>
+            <div id="marker_bar" style="overflow-y: scroll; max-height: 400px; display: inline-block; min-height: 400px; min-width: 410px; background-color: rgb(40, 40, 40); padding-left: 10px;">
+                <p style="font-size: 15pt; text-align: center; color: gray; font-style: italic;" id="placeholder_marker_bar">no breakpoints or loops</p>
+            </div>
+        </div>
+        <div class="innercontent" style="text-align: center;">
+            <div style="float: left;">
+                <div class="tooltip"><label class="switch" style="margin-bottom: 20px; top: -32px;"><input type="checkbox" id="usePlayBack"><span class="slider"><img src="./assets/testplay.png" style="padding-top: 5%; max-width: 50px;"></span></label>
+                    <span class="tooltiptext" style="margin-bottom: 40px;">Toggle Presentation-Mode</span></div>
+                <div class="tooltip"><button id="fullscreen" class="defbutton" style="border-radius: 10px;"><img src="assets/fullscreen.png"></button>
+                    <span class="tooltiptext">Fullscreen</span>
+                </div>
+            </div>
+            <div style="align-self: center; display: inline-block;">
+                <div class="tooltip"><button id="rev" class="defbutton" style="border-radius: 10px;"><img src="./assets/rew.png"></button><span class="tooltiptext">Previous Breakpoint</span></div>
+                <button id="play_pause" class="defbutton" style="border-radius: 10px;"><img src="./assets/play.png" id="play_pause_icon"></button>
+                <div class="tooltip"><button id="ff" class="defbutton" style="border-radius: 10px;"><img src="./assets/ff.png"></button><span class="tooltiptext">Next Breakpoint</span></div>
+            </div>
+            <div style="float: right;">
+                <div class="tooltip"><button id="add_break" class="defbutton" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;"><img src="./assets/addbreak.png"></button><span class="tooltiptext">Add Breakpoint</span></div>
+                <div class="tooltip"><button id="add_loop_start" class="defbutton" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;"><img src="./assets/addloop.png"></button><span class="tooltiptext">Add Loop</span></div>
+                <input type="number" id="fps" value="30" style="display: none;"><label style="display: none;">fps</label>
+            </div>
+        </div>
+        <div class="innercontent">
+            <div style="background-color: black; width: 100%; height: 50px;" id="offsetmarker">
+                <input type="range" id="timeline" style="width: 100%;" value="0:00:000">
+            </div>
+            <input id="playtime" value="0" type="text" step="1"><b><label id="tracklength"></label></b>
+        </div>
+    </div>
+</body>
+<script src="main.js"></script>
+</html>
